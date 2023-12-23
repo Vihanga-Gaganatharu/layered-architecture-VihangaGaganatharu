@@ -12,32 +12,37 @@ public class CustomerBOImpl implements CustomerBO {
     CustomerDAO customerDAO = new CustomerDAOImpl();
 
     @Override
-    public ArrayList<CustomerDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException {
         return customerDAO.getAll();
     }
 
     @Override
-    public boolean save(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException {
+    public boolean saveCustomer(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException {
         return customerDAO.save(customerDTO);
     }
 
     @Override
-    public void update(CustomerDTO dto) throws SQLException, ClassNotFoundException {
+    public void updateCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
         customerDAO.update(dto);
     }
 
     @Override
-    public boolean exit(String id) throws SQLException, ClassNotFoundException {
+    public boolean exitCustomer(String id) throws SQLException, ClassNotFoundException {
         return customerDAO.exit(id);
     }
 
     @Override
-    public void delete(String id) throws SQLException, ClassNotFoundException {
+    public void deleteCustomer(String id) throws SQLException, ClassNotFoundException {
         customerDAO.delete(id);
     }
 
     @Override
-    public String generateId() throws SQLException, ClassNotFoundException {
+    public String generateCustomerId() throws SQLException, ClassNotFoundException {
         return customerDAO.generateId();
+    }
+
+    @Override
+    public CustomerDTO searchCustomer(String newValue) throws SQLException, ClassNotFoundException {
+        return customerDAO.search(newValue);
     }
 }

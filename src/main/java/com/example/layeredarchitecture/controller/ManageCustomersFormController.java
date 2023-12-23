@@ -73,7 +73,7 @@ public class ManageCustomersFormController {
             Statement stm = connection.createStatement();
             ResultSet rst = stm.executeQuery("SELECT * FROM Customer");*/
 
-            ArrayList<CustomerDTO> allCustomer = customerBO.getAll();
+            ArrayList<CustomerDTO> allCustomer = customerBO.getAllCustomer();
 
             for (CustomerDTO dto : allCustomer){
                 tblCustomers.getItems().add(new CustomerTM(dto.getId(),dto.getName(),dto.getAddress()));
@@ -156,7 +156,7 @@ public class ManageCustomersFormController {
                 pstm.setString(3, address);
                 pstm.executeUpdate();*/
 
-                boolean isSaved = customerBO.save(new CustomerDTO(id,name,address));
+                boolean isSaved = customerBO.saveCustomer(new CustomerDTO(id,name,address));
 
                 if (isSaved) {
                     tblCustomers.getItems().add(new CustomerTM(id, name, address));
@@ -183,7 +183,7 @@ public class ManageCustomersFormController {
                 pstm.executeUpdate();*/
 
                 CustomerDTO dto = new CustomerDTO(id,name,address);
-                customerBO.update(dto);
+                customerBO.updateCustomer(dto);
                 tblCustomers.refresh();
 
             } catch (SQLException e) {
@@ -207,7 +207,7 @@ public class ManageCustomersFormController {
         pstm.setString(1, id);
         return pstm.executeQuery().next();*/
 
-        return customerBO.exit(id);
+        return customerBO.exitCustomer(id);
     }
 
     public void btnDelete_OnAction(ActionEvent actionEvent) {
@@ -222,7 +222,7 @@ public class ManageCustomersFormController {
             pstm.setString(1, id);
             pstm.executeUpdate();*/
 
-            customerBO.delete(id);
+            customerBO.deleteCustomer(id);
 
             tblCustomers.getItems().remove(tblCustomers.getSelectionModel().getSelectedItem());
             tblCustomers.getSelectionModel().clearSelection();
@@ -237,7 +237,7 @@ public class ManageCustomersFormController {
 
     private String generateNewId(){
         try {
-            return customerBO.generateId();
+            return customerBO.generateCustomerId();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
