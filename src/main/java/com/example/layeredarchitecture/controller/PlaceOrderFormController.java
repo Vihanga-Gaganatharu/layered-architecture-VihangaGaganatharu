@@ -1,7 +1,5 @@
 package com.example.layeredarchitecture.controller;
 
-import com.example.layeredarchitecture.bo.CustomerBO;
-import com.example.layeredarchitecture.bo.CustomerBOImpl;
 import com.example.layeredarchitecture.dao.custom.*;
 import com.example.layeredarchitecture.dao.custom.impl.*;
 import com.example.layeredarchitecture.db.DBConnection;
